@@ -1042,6 +1042,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   transition:background .3s ease,border-color .3s ease,transform .3s ease;
 }
 #lightbox-close:hover{background:rgba(55,15,25,.8);border-color:var(--gold-soft);transform:scale(1.08)}
+/* ============ PASES INPUT ============ */
+.pase-input{
+  width:100%;padding:14px 18px;
+  font-family:var(--serif);font-size:16px;font-style:italic;
+  color:var(--ink);background:var(--paper);
+  border:1px solid var(--hair-gold);
+  border-radius:2px;outline:none;
+  transition:border-color .35s,box-shadow .35s;
+  -webkit-appearance:none;
+}
+.pase-input:focus{
+  border-color:color-mix(in srgb,var(--gold) 65%,transparent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--gold-soft) 25%,transparent);
+}
+.pase-input::placeholder{color:var(--ink-soft);opacity:.6}
+.pase-label{
+  display:block;text-align:left;
+  font-family:var(--sans);font-size:10px;letter-spacing:.45em;
+  text-transform:uppercase;color:var(--gold-deep);
+  margin-bottom:6px;padding-left:2px;font-weight:500;
+}
 </style>
 </head>
 <body>
@@ -1127,7 +1148,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           </g>
         </svg>
         <span class="verse-quote">&ldquo;</span>
-        <p class="verse-text">El amor no es encontrar a alguien con quien vivir, es encontrar a alguien <em>sin quien</em> no puedes imaginar la vida.</p>
+        <p class="verse-text">[ Aquí van las palabras o mensaje de su vida juntos ]</p>
         <div class="verse-sig">Guadalupe &amp; Luis</div>
       </div>
     </div>
@@ -1151,7 +1172,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <div class="date-lbl">Sábado</div>
         </div>
       </div>
-      <div class="date-roman">XXXI · X · MMXXVI</div>
     </div>
   </section>
 
@@ -1172,9 +1192,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <div class="hair-word"><span>nuestra historia</span></div>
         <h2>Un camino <em>hacia</em> el amor</h2>
         <div class="story-body">
-          <p class="drop-cap" data-reveal="line">Nos encontramos en el momento menos esperado y desde entonces supimos que algo especial había comenzado. Cada conversación, cada risa compartida fue tejiendo los lazos de lo que hoy somos.</p>
-          <p data-reveal="line">Con el tiempo, lo que comenzó como amistad floreció en amor — un amor tranquilo, seguro y lleno de complicidad. Luis le preguntó a Guadalupe si quería caminar juntos para siempre, y la respuesta fue, sin dudarlo, sí.</p>
-          <p data-reveal="line">Hoy queremos compartir este momento tan especial con las personas que más amamos. Acompáñanos a celebrar el inicio de nuestra nueva vida juntos.</p>
+          <p class="drop-cap" data-reveal="line">[ Aquí va el mensaje para los invitados — puede ser la historia de la pareja, cómo se conocieron, o unas palabras de bienvenida escritas por los novios. ]</p>
         </div>
         <div class="story-initials">G &amp; L</div>
       </div>
@@ -1192,50 +1210,25 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <h2>Ceremonia <em>&amp;</em> Recepción</h2>
         <div class="locs-sub">Cuautitlan Izcalli · Estado de México</div>
       </div>
-      <div class="locs-grid">
+      <div class="locs-grid" style="grid-template-columns:1fr;max-width:560px">
         <article class="loc-card" data-tilt>
           <span class="washi washi--l"></span>
-          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-              <path d="M12 12 L17 17 M27 27 L32 32 M27 17 L32 12 M12 32 L17 27" opacity=".4"/>
-            </g>
-          </svg>
-          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <div class="loc-type">Ceremonia Civil</div>
-          <div class="loc-name">Salón y Jardín<br>Soleil</div>
-          <div class="loc-time">5:00 PM</div>
-          <div class="loc-addr">Cuautitlan Izcalli<br>Estado de México</div>
-          <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n%20y%20Jard%C3%ADn%20Soleil%20Cuautitlan%20Izcalli" target="_blank" rel="noopener">Cómo llegar</a>
-        </article>
-        <article class="loc-card" data-tilt>
           <span class="washi washi--r"></span>
-          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <div class="loc-type">Recepción</div>
-          <div class="loc-name">Salón y Jardín<br>Soleil</div>
-          <div class="loc-time">6:00 PM</div>
-          <div class="loc-addr">Cuautitlan Izcalli<br>Estado de México</div>
+          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true"><g stroke="var(--gold)" stroke-width=".8" fill="none"><circle cx="22" cy="22" r="6"/><circle cx="22" cy="22" r="14" opacity=".5"/><path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/><path d="M12 12 L17 17 M27 27 L32 32 M27 17 L32 12 M12 32 L17 27" opacity=".4"/></g></svg>
+          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true"><g stroke="var(--gold)" stroke-width=".8" fill="none"><circle cx="22" cy="22" r="6"/><circle cx="22" cy="22" r="14" opacity=".5"/><path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/></g></svg>
+          <div class="loc-name" style="font-size:30px;margin-bottom:32px">Salón y Jardín<br>Soleil</div>
+          <div class="loc-addr" style="margin-bottom:36px">Cuautitlan Izcalli · Estado de México</div>
+          <div style="display:flex;justify-content:center;gap:clamp(28px,8vw,72px);flex-wrap:wrap;margin-bottom:36px">
+            <div style="text-align:center">
+              <div class="loc-type" style="margin-bottom:10px">Ceremonia Civil</div>
+              <div class="loc-time">5:00 PM</div>
+            </div>
+            <div style="width:1px;background:var(--hair-gold);align-self:stretch;opacity:.7"></div>
+            <div style="text-align:center">
+              <div class="loc-type" style="margin-bottom:10px">Recepción</div>
+              <div class="loc-time">6:00 PM</div>
+            </div>
+          </div>
           <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n%20y%20Jard%C3%ADn%20Soleil%20Cuautitlan%20Izcalli" target="_blank" rel="noopener">Cómo llegar</a>
         </article>
       </div>
@@ -1343,15 +1336,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <div class="container">
       <div class="eyebrow">Código de vestimenta</div>
       <h2>Formal</h2>
-      <div class="dress-sub">black tie opcional</div>
-      <div class="dress-note">Mujeres · vestido largo &nbsp;·&nbsp; Caballeros · traje oscuro</div>
-      <div class="dress-swatches">
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#5C1A28,#3A0E18)"></div><div class="swatch-n">Marino</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#4A6A8F,#3A5575)"></div><div class="swatch-n">Azul atardecer</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#C9A456,#8F7335)"></div><div class="swatch-n">Dorado</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#E3B3BB,#C97B8B)"></div><div class="swatch-n">Rosa atardecer</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#D4C8B0,#B8AA8A)"></div><div class="swatch-n">Nude</div></div>
-      </div>
+      <div class="dress-note" style="margin-top:20px;font-size:15px;letter-spacing:.22em">Evitar tonos claros y blanco</div>
     </div>
   </section>
 
@@ -1457,11 +1442,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           </div>
           <div class="gift-name">Cuenta bancaria</div>
           <div class="gift-desc">
-            <span class="bank-line"><b>Banco:</b> Santander</span>
-            <span class="bank-line"><b>Titular:</b> Paulina Montalvo Cárdenas</span>
-            <span class="bank-line"><b>CLABE:</b> <span class="clabe">0141 8056 7823 4512 90</span></span>
+            <span class="bank-line"><b>Banco:</b> [ Banco ]</span>
+            <span class="bank-line"><b>Titular:</b> Guadalupe Kassandra</span>
+            <span class="bank-line"><b>CLABE:</b> <span class="clabe">0000 0000 0000 0000 00</span></span>
           </div>
-          <button class="gift-btn copy-clabe" data-clabe="014180567823451290" type="button">Copiar CLABE</button>
+          <button class="gift-btn copy-clabe" data-clabe="000000000000000000" type="button">Copiar CLABE</button>
         </article>
       </div>
     </div>
@@ -1502,8 +1487,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       </svg>
       <div class="eyebrow">Confirma tu asistencia</div>
       <h2>Tu presencia <em>lo</em> es todo</h2>
-      <p class="rsvp-text">Por favor confírmanos si nos acompañarás antes del <b>31 de agosto de 2026</b>. Un mensaje es suficiente — queremos saber que estarás ahí.</p>
-      <a class="rsvp-btn" href="https://wa.me/525583961487?text=Hola%21%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Guadalupe%20%26%20Luis" target="_blank" rel="noopener">
+      <p class="rsvp-text">Por favor confírmanos si nos acompañarás antes del <b>31 de agosto de 2026</b>.</p>
+
+      <!-- PASES — se activa con ?p=N en la URL -->
+      <div id="pases-wrap" style="display:none;margin-bottom:40px">
+        <div id="pases-badge" style="
+          display:inline-block;margin-bottom:32px;
+          font-family:var(--italiana);font-size:15px;letter-spacing:.3em;text-transform:uppercase;
+          color:var(--gold-deep);padding:12px 28px;
+          border:1px solid var(--hair-gold);background:color-mix(in srgb,var(--gold-soft) 18%,transparent);">
+        </div>
+        <div id="pases-inputs" style="display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto 8px"></div>
+        <p style="font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-soft);margin-top:10px">
+          Escribe el nombre de cada acompañante antes de confirmar
+        </p>
+      </div>
+
+      <a class="rsvp-btn" id="rsvp-wa-btn" href="https://wa.me/525583961487?text=Hola%21%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Guadalupe%20%26%20Luis" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0012 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6A12 12 0 0012 24c6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.5zM12 21.8c-1.8 0-3.6-.5-5.2-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.7 9.7 0 012.2 12c0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.9-2.9-1.5-4-3.5-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.3 2.2 3.3 5.3 4.7 2 .8 2.8.9 3.8.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
         Confirmar por WhatsApp
       </a>
@@ -2035,6 +2035,50 @@ function startParticles(){
 })();
 
 window.addEventListener('resize',()=>ScrollTrigger.refresh());
+
+// ------ SISTEMA DE PASES (?p=N) ------
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const p = parseInt(params.get('p'), 10);
+  if(!p || p < 1 || p > 10) return;
+
+  const wrap   = document.getElementById('pases-wrap');
+  const badge  = document.getElementById('pases-badge');
+  const inputs = document.getElementById('pases-inputs');
+  const waBtn  = document.getElementById('rsvp-wa-btn');
+  if(!wrap || !badge || !inputs || !waBtn) return;
+
+  const plural = p === 1 ? 'persona' : 'personas';
+  badge.textContent = 'Tu invitacion es para ' + p + ' ' + plural;
+  wrap.style.display = 'block';
+
+  const fields = [];
+  for(let i = 1; i <= p; i++){
+    const lbl = document.createElement('label');
+    const span = document.createElement('span');
+    span.className = 'pase-label';
+    span.textContent = 'Acompanante ' + i;
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.className = 'pase-input';
+    inp.placeholder = 'Nombre completo';
+    inp.setAttribute('autocomplete','off');
+    lbl.appendChild(span);
+    lbl.appendChild(inp);
+    inputs.appendChild(lbl);
+    fields.push(inp);
+  }
+
+  function buildWaLink(){
+    const names = fields.map((f,i) => f.value.trim() || ('Acompanante ' + (i+1)));
+    const lista = names.map((n,i) => (i+1) + '. ' + n).join('%0A');
+    const msg = 'Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Guadalupe%20%26%20Luis%20(' + p + '%20pase' + (p>1?'s':'') + ')%0AAsistentes:%0A' + lista;
+    waBtn.href = 'https://wa.me/525583961487?text=' + msg;
+  }
+
+  buildWaLink();
+  fields.forEach(f => f.addEventListener('input', buildWaLink));
+})();
 </script>
 </body>
 </html>
