@@ -1056,9 +1056,73 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   text-transform:uppercase;color:var(--gold-deep);
   margin-bottom:6px;padding-left:2px;font-weight:500;
 }
+
+/* ── VINYL DISC PLAYER ──────────────────────────────────────── */
+.vinyl-wrap{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  border-radius:50%;
+  /* Hover: wrapper hace el scale con spring — no interfiere con el spin */
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1);
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,.5));
+  touch-action:manipulation;
+}
+.vinyl-wrap:hover{ transform:scale(1.1) }
+.vinyl-wrap:active{ transform:scale(.93) }
+
+.vinyl-btn{
+  width:66px;height:66px;
+  border-radius:50%;border:none;padding:0;cursor:pointer;outline:none;
+  display:flex;align-items:center;justify-content:center;
+  transform-origin:center center;
+  /* Capas: 1) agujero central  2) etiqueta dorada  3) surcos vinilo */
+  background:
+    radial-gradient(circle at 50% 50%,
+      #0d0302 0%, #0d0302 5.5%, transparent 5.5%),
+    radial-gradient(circle at 38% 38%,
+      #EBB27F 0%, #C47A3A 55%, #8F4A20 100%)
+      50% 50% / 42% 42% no-repeat,
+    repeating-radial-gradient(circle at 50% 50%,
+      #1d0806 0, #1d0806 1px,
+      #2e1009 1.8px, #1d0806 2.6px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 2px 14px rgba(0,0,0,.45);
+}
+
+/* Giro + glow áureo cuando reproduce */
+.vinyl-btn.on{
+  animation:vinyl-spin 3s linear infinite;
+  box-shadow:
+    0 0 0 2.5px rgba(196,122,58,.45),
+    0 0 22px rgba(196,122,58,.3),
+    0 4px 28px rgba(0,0,0,.55);
+}
+
+/* Texto "G&L" en la etiqueta */
+.vinyl-lbl{
+  font-family:var(--script);font-size:8px;
+  color:rgba(92,26,40,.88);line-height:1;letter-spacing:0;
+  pointer-events:none;white-space:nowrap;
+  position:relative;z-index:1;margin-top:1px;
+}
+
+@keyframes vinyl-spin{ to{ transform:rotate(360deg) } }
+
+/* Sin movimiento: detener giro */
+@media(prefers-reduced-motion:reduce){
+  .vinyl-btn.on{ animation:none }
+}
 </style>
 </head>
 <body>
+
+<!-- AUDIO + VINYL PLAYER -->
+<audio id="bgMusic" loop preload="none">
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+<div class="vinyl-wrap" id="vinylWrap">
+  <button class="vinyl-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Reproducir música">
+    <span class="vinyl-lbl">G&amp;L</span>
+  </button>
+</div>
 
 <!-- ENVELOPE OPENING SEQUENCE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
@@ -1613,6 +1677,13 @@ function launchInvitation(){
     if(opened) return;
     opened = true;
 
+    // Música arranca con la interacción del usuario
+    const aud = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    if(aud){ aud.play().catch(()=>{}); }
+    if(btn){ btn.classList.add('on'); btn.setAttribute('aria-label','Pausar música'); }
+    playing = true;
+
     // Hint desaparece
     gsap.to(envHint,{opacity:0,duration:.35,ease:'power2.out'});
 
@@ -2067,6 +2138,24 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
   buildWaLink();
   fields.forEach(f => f.addEventListener('input', buildWaLink));
 })();
+
+// ------ VINYL PLAYER ------
+let playing = false;
+function toggleMusic(){
+  const aud = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  if(!aud || !btn) return;
+  if(playing){
+    aud.pause();
+    btn.classList.remove('on');
+    btn.setAttribute('aria-label','Reproducir música');
+  } else {
+    aud.play().catch(()=>{});
+    btn.classList.add('on');
+    btn.setAttribute('aria-label','Pausar música');
+  }
+  playing = !playing;
+}
 </script>
 </body>
 </html>
