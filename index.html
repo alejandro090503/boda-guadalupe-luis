@@ -836,142 +836,71 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .hero-content{padding:40px 20px}
   .cd-block{min-width:82px;padding:22px 16px}
 }
-/* ============ ITINERARIO ============ */
-.itinerary{text-align:center;padding:min(16vh,150px) 0;contain:none;overflow:visible}
-.itinerary h2{font-size:clamp(32px,4.5vw,52px);margin-bottom:12px}
-.itinerary-sub{font-family:var(--script);color:var(--gold);font-size:30px;margin-bottom:72px;line-height:1}
-.itin-wrap{
+/* ============ ITINERARIO V3 — Centered Glowing Timeline ============ */
+#siti-gl{overflow:visible;padding:min(14vh,130px) 24px;text-align:center}
+.itv3-gl{
   position:relative;
-  max-width:780px;
-  margin:0 auto;
-  padding:20px clamp(16px,4vw,40px);
+  display:flex;flex-direction:column;align-items:center;
+  padding:10px 0 10px;max-width:480px;margin:0 auto;
 }
-.itin-track{
-  position:absolute;
-  left:50%;top:0;bottom:0;
-  width:0;
-  overflow:visible;
-  z-index:1;
-  pointer-events:none;
-}
-/* Rayo de luz — capa de resplandor difuminado (Gaussian, no box-shadow) */
-.itin-track-glow{
-  position:absolute;
-  left:-22px;width:48px;
-  top:0;height:100%;
-  transform:scaleY(0);
-  transform-origin:top center;
+.itv3-gl-track{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:0;bottom:0;width:1px;z-index:0;
   background:linear-gradient(to bottom,
     transparent 0%,
-    color-mix(in srgb, var(--gold) 55%, transparent) 12%,
-    var(--gold) 40%,
-    var(--gold) 60%,
-    color-mix(in srgb, var(--gold) 55%, transparent) 88%,
-    transparent 100%
-  );
-  filter:blur(16px);
-  opacity:.62;
-  will-change:transform;
-  pointer-events:none;
+    rgba(196,122,58,.35) 10%,
+    rgba(92,26,40,.22) 45%,
+    rgba(196,122,58,.30) 80%,
+    transparent 100%);
 }
-/* Rayo de luz — núcleo brillante delgado */
-.itin-track-fill{
-  position:absolute;
-  left:-1px;width:2px;
-  top:0;height:100%;
-  transform:scaleY(0);
-  transform-origin:top center;
+.itv3-gl-glow{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:0;width:5px;height:110px;
   background:linear-gradient(to bottom,
-    transparent 0%,
-    var(--gold-soft) 6%,
-    #fff8e8 38%,
-    #fff 50%,
-    #fff8e8 62%,
-    var(--gold-soft) 94%,
-    transparent 100%
-  );
-  border-radius:1px;
-  will-change:transform;
+    transparent,
+    rgba(196,122,58,.55) 20%,
+    rgba(196,122,58,.90) 50%,
+    rgba(196,122,58,.55) 80%,
+    transparent);
+  filter:blur(3px);border-radius:6px;
+  z-index:1;pointer-events:none;
 }
-.itin-events{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(52px,8vh,96px);position:relative;z-index:2}
-.itin-event{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 40px 1fr;
-  align-items:center;
-  gap:18px;
+.itv3-gl-item{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:30px 16px 4px;width:100%;
 }
-.itin-event .itin-spacer{display:block}
-.itin-event--right .itin-card{grid-column:3;text-align:left}
-.itin-event--right .itin-spacer{grid-column:1}
-.itin-event--left .itin-card{grid-column:1;text-align:right}
-.itin-event--left .itin-spacer{grid-column:3}
-.itin-marker{
-  grid-column:2;
-  width:10px;height:10px;
-  margin:0 auto;
-  border-radius:50%;
-  background:color-mix(in srgb, var(--accent) 20%, var(--paper));
-  border:1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  position:relative;z-index:3;display:block;
-  opacity:.4;
-  transition:opacity .45s ease, background .45s ease, border-color .45s ease;
+.itv3-gl-gem{
+  width:9px;height:9px;
+  background:linear-gradient(135deg,#E8AA7A 30%,#8F4A20);
+  transform:rotate(45deg);border-radius:2px;
+  box-shadow:0 0 0 4px rgba(196,122,58,.12),0 0 18px rgba(196,122,58,.45);
+  margin-bottom:18px;flex-shrink:0;
 }
-.itin-event.is-active .itin-marker{
-  opacity:1;
-  background:var(--gold);
-  border-color:var(--gold-deep);
+.itv3-gl-gem-rose{
+  background:linear-gradient(135deg,#B55A68 30%,#5C1A28);
+  box-shadow:0 0 0 4px rgba(139,31,50,.14),0 0 18px rgba(139,31,50,.45);
 }
-.itin-card{
-  padding:22px 26px;
-  background:color-mix(in srgb, var(--surface) 72%, transparent);
-  border:1px solid color-mix(in srgb, var(--accent) 18%, transparent);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  border-radius:12px;
-  transition:border-color .5s ease, background .5s ease, box-shadow .5s ease, transform .5s ease;
+.itv3-gl-gem-mid{
+  background:linear-gradient(135deg,#D4A070 30%,#8F4A20);
+  box-shadow:0 0 0 4px rgba(196,122,58,.10),0 0 18px rgba(196,122,58,.38);
 }
-.itin-time{
-  font-family:var(--display);
-  font-style:italic;
-  font-size:clamp(24px,3.4vw,32px);
-  color:var(--accent);
-  letter-spacing:.02em;
-  margin-bottom:4px;
-  transition:color .5s ease;
+.itv3-gl-time{
+  font-family:var(--display);font-size:clamp(30px,6vw,44px);font-weight:300;
+  letter-spacing:6px;color:var(--accent-deep);line-height:1;margin-bottom:6px;
+  text-indent:6px;
 }
-.itin-name{
-  font-family:var(--sans);
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:.24em;
-  color:var(--ink-soft);
-  font-weight:500;
+.itv3-gl-ev{
+  font-family:var(--serif);font-style:italic;
+  font-size:13px;color:var(--ink-soft);
+  letter-spacing:3px;text-transform:uppercase;line-height:1.5;
 }
-.itin-desc{
-  margin-top:10px;
-  font-size:14.5px;
-  color:var(--ink-soft);
-  line-height:1.55;
+.itv3-gl-sub{
+  font-family:var(--script);font-size:20px;
+  color:var(--gold);opacity:.8;
+  letter-spacing:1px;margin-top:4px;line-height:1.4;
 }
-.itin-event.is-active .itin-card{
-  border-color:color-mix(in srgb, var(--gold) 55%, transparent);
-  background:color-mix(in srgb, var(--surface) 88%, transparent);
-  box-shadow:
-    0 14px 44px -18px color-mix(in srgb, var(--accent) 55%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--gold) 22%, transparent);
-}
-.itin-event.is-active .itin-time{color:var(--gold-deep)}
-@media (max-width:680px){
-  .itin-wrap{padding-left:48px;padding-right:14px}
-  .itin-track{left:24px;margin-left:0}
-  .itin-events{gap:46px}
-  .itin-event{grid-template-columns:14px 1fr;gap:22px}
-  .itin-marker{grid-column:1}
-  .itin-card{grid-column:2 !important;text-align:left !important}
-  .itin-spacer{display:none}
-  .itin-time{font-size:22px}
-}
+.itv3-gl-item:last-child{padding-bottom:10px;}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -1214,7 +1143,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           </g>
         </svg>
         <span class="verse-quote">&ldquo;</span>
-        <p class="verse-text">[ Aquí van las palabras o mensaje de su vida juntos ]</p>
+        <p class="verse-text">Estaremos encantados de contar con tu presencia en este día tan especial para nosotros, en el cual uniremos nuestras vidas en matrimonio.</p>
         <div class="verse-sig">Guadalupe &amp; Luis</div>
       </div>
     </div>
@@ -1243,27 +1172,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- DIVIDER: date-hero dark → surface -->
   <div class="seam" style="--from:#5C1A28;--to:var(--surface)" aria-hidden="true"></div>
-
-  <!-- HISTORIA -->
-  <section class="section-surface">
-    <span class="mono-wm" aria-hidden="true">G &amp; L</span>
-    <div class="container">
-      <div class="story">
-        <svg class="story-ornament" viewBox="0 0 100 40" fill="none" aria-hidden="true">
-          <g stroke="var(--gold)" stroke-width="1" fill="none" opacity=".7">
-            <path d="M10 20 Q30 10 50 20 Q70 30 90 20"/>
-            <circle cx="50" cy="20" r="2" fill="var(--gold)" stroke="none"/>
-          </g>
-        </svg>
-        <div class="hair-word"><span>nuestra historia</span></div>
-        <h2>Un camino <em>hacia</em> el amor</h2>
-        <div class="story-body">
-          <p class="drop-cap" data-reveal="line">[ Aquí va el mensaje para los invitados — puede ser la historia de la pareja, cómo se conocieron, o unas palabras de bienvenida escritas por los novios. ]</p>
-        </div>
-        <div class="story-initials">G &amp; L</div>
-      </div>
-    </div>
-  </section>
 
   <!-- DIVIDER: surface → paper -->
   <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
@@ -1322,71 +1230,54 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <!-- DIVIDER: surface → paper (hacia itinerario) -->
   <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
 
-  <!-- ITINERARIO -->
-  <section class="section-paper itinerary">
+  <!-- ITINERARIO V3 -->
+  <section class="section-paper" id="siti-gl">
     <span class="mono-wm" aria-hidden="true">G &amp; L</span>
     <div class="container">
       <div class="eyebrow">Itinerario</div>
       <h2>El <em>día</em> más especial</h2>
-      <div class="itinerary-sub">una noche para recordar</div>
-      <div class="itin-wrap" id="itin">
-        <div class="itin-track" aria-hidden="true">
-          <div class="itin-track-glow" id="itin-glow"></div>
-          <div class="itin-track-fill" id="itin-fill"></div>
+      <p style="font-family:var(--script);color:var(--gold);font-size:28px;margin:8px 0 56px;line-height:1">una noche para recordar</p>
+      <div class="itv3-gl">
+        <div class="itv3-gl-track"></div>
+        <div class="itv3-gl-glow" id="itv3GlGlow"></div>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem"></div>
+          <div class="itv3-gl-time">4:30 PM</div>
+          <div class="itv3-gl-ev">Llegada</div>
+          <div class="itv3-gl-sub">Salón y Jardín Soleil</div>
         </div>
-        <ul class="itin-events">
-          <li class="itin-event itin-event--right">
-            <div class="itin-card">
-              <div class="itin-time">4:30 PM</div>
-              <div class="itin-name">Llegada</div>
-              <div class="itin-desc">Bienvenida a los invitados en Salón y Jardín Soleil.</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-          <li class="itin-event itin-event--left">
-            <div class="itin-card">
-              <div class="itin-time">5:00 PM</div>
-              <div class="itin-name">Ceremonia Civil</div>
-              <div class="itin-desc">Nos unimos en matrimonio ante el Registro Civil en un emotivo acto.</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-          <li class="itin-event itin-event--right">
-            <div class="itin-card">
-              <div class="itin-time">6:00 PM</div>
-              <div class="itin-name">Recepción</div>
-              <div class="itin-desc">Cóctel de bienvenida, bocadillos y brindis para celebrar el gran momento.</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-          <li class="itin-event itin-event--left">
-            <div class="itin-card">
-              <div class="itin-time">Próximamente</div>
-              <div class="itin-name">Cena</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-          <li class="itin-event itin-event--right">
-            <div class="itin-card">
-              <div class="itin-time">Próximamente</div>
-              <div class="itin-name">Primer baile</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-          <li class="itin-event itin-event--left">
-            <div class="itin-card">
-              <div class="itin-time">Próximamente</div>
-              <div class="itin-name">Despedida</div>
-            </div>
-            <span class="itin-marker" aria-hidden="true"></span>
-            <div class="itin-spacer" aria-hidden="true"></div>
-          </li>
-        </ul>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem itv3-gl-gem-rose"></div>
+          <div class="itv3-gl-time">5:00 PM</div>
+          <div class="itv3-gl-ev">Ceremonia Civil</div>
+        </div>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem itv3-gl-gem-mid"></div>
+          <div class="itv3-gl-time">6:00 PM</div>
+          <div class="itv3-gl-ev">Recepción</div>
+          <div class="itv3-gl-sub">Cóctel &amp; Brindis</div>
+        </div>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem itv3-gl-gem-rose"></div>
+          <div class="itv3-gl-time">7:00 PM</div>
+          <div class="itv3-gl-ev">Cena</div>
+        </div>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem"></div>
+          <div class="itv3-gl-time">8:00 PM</div>
+          <div class="itv3-gl-ev">Primer Baile</div>
+        </div>
+
+        <div class="itv3-gl-item">
+          <div class="itv3-gl-gem itv3-gl-gem-rose"></div>
+          <div class="itv3-gl-time">10:30 PM</div>
+          <div class="itv3-gl-ev">Despedida</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1558,10 +1449,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="eyebrow">Álbum compartido</div>
       <h2>Comparte <em>tus</em> fotos con nosotros</h2>
       <p class="album-text">Escanea el código QR con tu cámara para subir tus fotos al álbum del evento. Queremos vivir el día desde tus ojos también.</p>
-      <div class="album-qr" id="qr-wrap" style="opacity:.35;filter:blur(2px);pointer-events:none">
+      <div class="album-qr" id="qr-wrap">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=5C1A28&bgcolor=F5F1E6&margin=4&data=proximamente" alt="Código QR para álbum compartido" width="300" height="300" loading="lazy">
       </div>
-      <p class="album-link" style="font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-top:16px;">Próximamente</p>
+      <p class="album-link" style="font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-top:16px;">Escanea para ver el álbum</p>
     </div>
   </section>
 
@@ -1851,52 +1742,53 @@ tick();setInterval(tick,1000);
 gsap.fromTo('.cd-block',{opacity:0,y:40,rotateX:-30},{opacity:1,y:0,rotateX:0,duration:1.1,stagger:.12,ease:'power4.out',scrollTrigger:{trigger:'.countdown-grid',start:'top 82%'}});
 gsap.fromTo('.countdown .eyebrow, .countdown h2, .countdown-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.1,scrollTrigger:{trigger:'.countdown',start:'top 78%'}});
 
-// ------ ITINERARIO — línea viva + resplandor por evento ------
-(() => {
-  const wrap = document.getElementById('itin');
-  const fill = document.getElementById('itin-fill');
-  const glow = document.getElementById('itin-glow');
-  if(!wrap || !fill) return;
-  const events = Array.from(wrap.querySelectorAll('.itin-event'));
-  const nodes  = events.map(e => e.querySelector('.itin-marker'));
-
-  // entrada de tarjetas (una vez)
-  gsap.fromTo(events, {opacity:0, y:36}, {
-    opacity:1, y:0, duration:.9, stagger:.1, ease:'power3.out',
-    scrollTrigger:{trigger:wrap, start:'top 78%'}
-  });
-
-  let nodePositions = [];
-  const measure = () => {
-    const wrapRect = wrap.getBoundingClientRect();
-    const h = wrap.offsetHeight;
-    nodePositions = nodes.map(n => {
-      const r = n.getBoundingClientRect();
-      const center = (r.top - wrapRect.top) + r.height/2;
-      return center / h;
-    });
-  };
-  measure();
-  window.addEventListener('resize', () => { measure(); ScrollTrigger.refresh(); });
+// ------ ITINERARIO V3 — Centered Glowing Timeline ------
+(function initItineraryGL(){
+  var glow    = document.getElementById('itv3GlGlow');
+  var section = document.getElementById('siti-gl');
+  var items   = document.querySelectorAll('.itv3-gl-item');
+  if(!glow || !section) return;
 
   ScrollTrigger.create({
-    trigger: wrap,
-    start: 'top 72%',
-    end:   'bottom 55%',
-    scrub: 0.6,
-    onUpdate: self => {
-      const p = self.progress;
-      fill.style.transform = 'scaleY(' + p.toFixed(4) + ')';
-      if(glow) glow.style.transform = 'scaleY(' + p.toFixed(4) + ')';
-      for(let i=0;i<events.length;i++){
-        const threshold = nodePositions[i] || 0;
-        if(p >= threshold - 0.02){
-          if(!events[i].classList.contains('is-active')) events[i].classList.add('is-active');
-        } else {
-          if(events[i].classList.contains('is-active')) events[i].classList.remove('is-active');
-        }
-      }
+    trigger: section,
+    start: 'top 58%',
+    end:   'bottom 42%',
+    scrub: 1.8,
+    onUpdate: function(self){
+      var track = section.querySelector('.itv3-gl-track');
+      if(!track) return;
+      var h = track.offsetHeight - 55;
+      glow.style.top = (self.progress * h) + 'px';
     }
+  });
+
+  items.forEach(function(item){
+    var gem    = item.querySelector('.itv3-gl-gem');
+    var isRose = gem && gem.classList.contains('itv3-gl-gem-rose');
+    var gc     = isRose ? '139,31,50' : '196,122,58';
+
+    if(gem) gsap.fromTo(gem,
+      {scale:0, opacity:0},
+      {scale:1, opacity:1, duration:0.6, ease:'back.out(2.8)',
+       scrollTrigger:{trigger:item, start:'top 86%', once:true},
+       onComplete:function(){
+         gsap.timeline()
+           .to(gem,{scale:1.4, filter:'drop-shadow(0 0 20px rgba('+gc+',1))',    duration:0.3,  ease:'power2.out'})
+           .to(gem,{scale:1,   filter:'drop-shadow(0 0 5px rgba('+gc+',0.35))',  duration:0.28, ease:'power2.in'})
+           .to(gem,{scale:1.2, filter:'drop-shadow(0 0 14px rgba('+gc+',0.8))', duration:0.22, ease:'power2.out'})
+           .to(gem,{scale:1,   filter:'drop-shadow(0 0 4px rgba('+gc+',0.25))', duration:0.32, ease:'power2.in'});
+       }
+      });
+
+    var els = [
+      item.querySelector('.itv3-gl-time'),
+      item.querySelector('.itv3-gl-ev'),
+      item.querySelector('.itv3-gl-sub')
+    ].filter(Boolean);
+    gsap.fromTo(els,
+      {y:14, opacity:0},
+      {y:0, opacity:1, duration:0.8, ease:'power2.out', stagger:0.08,
+       scrollTrigger:{trigger:item, start:'top 86%', once:true}});
   });
 })();
 
