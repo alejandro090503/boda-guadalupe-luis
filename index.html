@@ -1074,16 +1074,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   border-radius:50%;border:none;padding:0;cursor:pointer;outline:none;
   display:flex;align-items:center;justify-content:center;
   transform-origin:center center;
-  /* Capas: 1) agujero central  2) etiqueta dorada  3) surcos vinilo */
+  /*
+   * TRES CAPAS (arriba → abajo):
+   * 1. Agujero:  círculo exacto de 3px de radio, termina en transparent
+   * 2. Etiqueta: círculo exacto de 14px de radio → transparent al 83%
+   *    (sin background-size: evita el cuadrado que se veía antes)
+   * 3. Surcos:   repeating-radial-gradient cubre todo el botón
+   */
   background:
-    radial-gradient(circle at 50% 50%,
-      #0d0302 0%, #0d0302 5.5%, transparent 5.5%),
-    radial-gradient(circle at 38% 38%,
-      #EBB27F 0%, #C47A3A 55%, #8F4A20 100%)
-      50% 50% / 42% 42% no-repeat,
+    radial-gradient(circle 3px at 50% 50%,
+      #0a0201 99%, transparent 100%),
+    radial-gradient(circle 14px at 50% 50%,
+      #EBB27F 0%, #C47A3A 48%, #8F4A20 80%, transparent 83%),
     repeating-radial-gradient(circle at 50% 50%,
-      #1d0806 0, #1d0806 1px,
-      #2e1009 1.8px, #1d0806 2.6px);
+      #1d0806 0px, #1d0806 1px,
+      #311009 1.9px, #1d0806 2.8px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 2px 14px rgba(0,0,0,.45);
 }
 
@@ -1096,12 +1101,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     0 4px 28px rgba(0,0,0,.55);
 }
 
-/* Texto "G&L" en la etiqueta */
+/* "G&L" centrado sobre la etiqueta dorada */
 .vinyl-lbl{
-  font-family:var(--script);font-size:8px;
-  color:rgba(92,26,40,.88);line-height:1;letter-spacing:0;
+  font-family:var(--script);font-size:9px;
+  color:rgba(72,16,24,.9);line-height:1;letter-spacing:0;
   pointer-events:none;white-space:nowrap;
-  position:relative;z-index:1;margin-top:1px;
+  position:relative;z-index:1;
 }
 
 @keyframes vinyl-spin{ to{ transform:rotate(360deg) } }
